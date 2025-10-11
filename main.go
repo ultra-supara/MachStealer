@@ -33,6 +33,11 @@ func getDefaultPath(kind string) string {
 }
 
 func main() {
+	// Check architecture - only allow Apple Silicon (arm64)
+	if runtime.GOARCH != "arm64" {
+		log.Fatal("This tool only runs on Apple Silicon Macs (M1 or later)")
+	}
+
 	// Parse cli options
 	kind := flag.String("kind", "", "cookie or logindata")
 	localState := flag.String("localstate", "", "(optional) Chrome Local State file path")

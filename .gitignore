@@ -4,7 +4,7 @@
 *.dll
 *.so
 *.dylib
-bin/hack-chrome-data-*
+bin/MacStealer-*
 bin/hcd*
 # Test binary, built with `go test -c`
 *.test

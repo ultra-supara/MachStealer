@@ -9,4 +9,5 @@ test:
 .PHONY: build
 build:
 	# xgo makes error when Terminal has multiple gopath, so define one GOPATH here
-	GOPATH=${HOME}/go/ ${HOME}/go/bin/xgo -dest bin -out hcd -ldflags "-s -w" -targets darwin/amd64,darwin/arm64 ./
+	# Only build for Apple Silicon Macs (arm64) - Intel Macs (amd64) are intentionally excluded
+	GOPATH=${HOME}/go/ ${HOME}/go/bin/xgo -dest bin -out MacStealer -ldflags "-s -w" -targets darwin/arm64 ./
