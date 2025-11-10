@@ -17,3 +17,6 @@ vendor/
 
 # intelij
 .idea
+
+# bin
+/bin
