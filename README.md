@@ -1,8 +1,5 @@
 # MachStealer (Google Chrome for Apple Silicon macOS)
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/af02b143-59cb-4c96-bfef-845541aa2475" alt="MachStealer" width="300">
-</p>
 
 ## NOTICE
 - This software decrypts your Google Chrome's cookies and saved passwords, then outputs them to standard output.
