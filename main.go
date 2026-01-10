@@ -27,6 +27,8 @@ func getDefaultPath(kind string) string {
 		return filepath.Join(basePath, "Cookies")
 	case "logindata":
 		return filepath.Join(basePath, "Login Data")
+	case "creditcard":
+		return filepath.Join(basePath, "Web Data")
 	default:
 		return ""
 	}
@@ -39,7 +41,7 @@ func main() {
 	}
 
 	// Parse cli options
-	kind := flag.String("kind", "", "cookie or logindata")
+	kind := flag.String("kind", "", "cookie, logindata, or creditcard")
 	localState := flag.String("localstate", "", "(optional) Chrome Local State file path")
 	sessionstorage := flag.String("sessionstorage", "", "(optional) Chrome Sesssion Storage on Keychain (Mac only)")
 	targetPath := flag.String("targetpath", "", "(optional) File path of the kind (Cookies or Login Data)")
@@ -106,6 +108,23 @@ func main() {
 		for _, v := range ld {
 			j, _ := json.Marshal(v)
 			fmt.Println(string(j))
+		}
+
+	case "creditcard":
+		cc, err := browsingdata.GetCreditCard(decryptedKey, path)
+		if err != nil {
+			log.Fatalf("Failed to get credit card data: %v", err)
+		}
+		output := struct {
+			CreditCards []browsingdata.CreditCard `json:"credit_cards"`
+		}{
+			CreditCards: cc,
+		}
+
+		encoder := json.NewEncoder(os.Stdout)
+		encoder.SetIndent("", "  ")
+		if err := encoder.Encode(output); err != nil {
+			log.Fatalf("Failed to encode credit card data: %v", err)
 		}
 
 	default:
