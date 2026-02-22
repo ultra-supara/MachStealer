@@ -132,3 +132,24 @@ JSON format with login credentials:
   - Chrome's encrypted values use AES-128-CBC (macOS)
   - Master key derived using PBKDF2 (salt: "saltysalt", 1003 iterations, SHA-1)
 - **Architecture check**: Verifies running on ARM64 at startup
+
+## Technique Mapping to Active macOS Infostealer Families
+
+MachStealer reproduces the credential harvesting techniques shared across major macOS MaaS infostealers. The table below maps each technique to documented usage by active families.
+
+| Technique | MachStealer | AMOS | Poseidon | Banshee | Cthulhu | Cuckoo |
+|-----------|:-----------:|:----:|:--------:|:-------:|:-------:|:------:|
+| Keychain Safe Storage extraction | ○ | ○ | ○ | ○ | ○ | ○ |
+| PBKDF2 key derivation | ○ | ○ | ○ | ○ | ○ | ○ |
+| AES-128-CBC decryption | ○ | ○ | ○ | ○ | ○ | ○ |
+| SQLite database copy & read | ○ | ○ | ○ | ○ | ○ | ○ |
+| Cookie extraction | ○ | ○ | ○ | ○ | ○ | ○ |
+| Login credential extraction | ○ | ○ | ○ | ○ | ○ | ○ |
+| Credit card extraction | ○ | ○ | ○ | ○ | ○ | ○ |
+| History extraction | ○ | ○ | — | ○ | — | ○ |
+| Extension enumeration | ○ | ○ | — | ○ | — | ○ |
+| C2 / Exfiltration | — | ○ | ○ | ○ | ○ | ○ |
+| Persistence | — | — | ○ | — | — | ○ |
+| Anti-analysis / VM detection | — | ○ | — | ○ | — | ○ |
+
+The last three rows show what MachStealer deliberately excludes. No C2, no exfiltration, no persistence, no evasion.
