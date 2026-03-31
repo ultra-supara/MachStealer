@@ -1,4 +1,4 @@
-# MachStealer (Google Chrome for Apple Silicon macOS)
+# MachStealer:One Pipeline Behind Every macOS Infostealer
 
 
 ## NOTICE
