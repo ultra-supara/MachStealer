@@ -1,5 +1,28 @@
 # MachStealer:One Pipeline Behind Every macOS Infostealer
 
+## Talks & Recognition
+
+[![Black Hat USA 2026 Arsenal](https://img.shields.io/badge/Black%20Hat%20USA%202026-Arsenal-black?style=for-the-badge&logo=blackhat)](https://blackhat.com/us-26/arsenal/schedule/index.html?track[]=malware#machstealerone-pipeline-behind-every-macos-infostealer-52134)
+
+Selected for **Black Hat USA 2026 Arsenal** — *MachStealer: One Pipeline Behind Every macOS Infostealer*.
+
+<details>
+<summary><b>▶ Watch the talk (English)</b></summary>
+
+<a href="https://youtu.be/mzyQ9-8qsFg">
+  <img src="https://img.youtube.com/vi/mzyQ9-8qsFg/maxresdefault.jpg" alt="MachStealer talk (EN)" width="640">
+</a>
+
+</details>
+
+<details>
+<summary><b>▶ 講演を見る (日本語)</b></summary>
+
+<a href="https://youtu.be/9KyRqy37Iao">
+  <img src="https://img.youtube.com/vi/9KyRqy37Iao/maxresdefault.jpg" alt="MachStealer talk (JA)" width="640">
+</a>
+
+</details>
 
 ## NOTICE
 - This software decrypts your Google Chrome's cookies and saved passwords, then outputs them to standard output.
