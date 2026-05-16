@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320" role="img" aria-label="MachStealer — One Pipeline Behind Every macOS Infostealer">
+  <title>MachStealer banner</title>
+  <defs>
+    <!-- 夜空 (night sky) -->
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#0a0d18"/>
+      <stop offset="0.55" stop-color="#0d1424"/>
+      <stop offset="1"   stop-color="#000000"/>
+    </linearGradient>
+
+    <!-- 朱の月 -->
+    <radialGradient id="moon" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0"   stop-color="#f4a07a"/>
+      <stop offset="0.55" stop-color="#d04a3a"/>
+      <stop offset="1"   stop-color="#7a1e16"/>
+    </radialGradient>
+
+    <!-- 月のハロ (anime-style atmospheric glow) -->
+    <radialGradient id="moonHalo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0"   stop-color="#d04a3a" stop-opacity="0.55"/>
+      <stop offset="0.5" stop-color="#d04a3a" stop-opacity="0.15"/>
+      <stop offset="1"   stop-color="#d04a3a" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- 雲 (sumi-style cloud strip) -->
+    <linearGradient id="cloud" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1c2438" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#1c2438" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#1c2438" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- 枯山水の砂紋 (dry-garden sand ripples — concentric, low-opacity) -->
+    <pattern id="karesansui" x="0" y="0" width="320" height="320" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="#3a4258" stroke-width="0.6" opacity="0.35">
+        <circle cx="160" cy="320" r="60"/>
+        <circle cx="160" cy="320" r="100"/>
+        <circle cx="160" cy="320" r="140"/>
+        <circle cx="160" cy="320" r="180"/>
+        <circle cx="160" cy="320" r="220"/>
+      </g>
+    </pattern>
+
+    <!-- Vermilion seal grain -->
+    <filter id="seal-grain" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0
+                             0 0 0 0 0
+                             0 0 0 0 0
+                             0 0 0 -1.6 1"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+
+    <!-- Soft moon glow filter -->
+    <filter id="moonGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+
+    <!-- Mask for crescent moon (waning gibbous — 十六夜 / izayoi) -->
+    <mask id="izayoi">
+      <rect width="1280" height="320" fill="white"/>
+      <circle cx="232" cy="138" r="78" fill="black"/>
+    </mask>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="1280" height="320" fill="url(#sky)"/>
+
+  <!-- Karesansui sand ripples (bottom) -->
+  <rect width="1280" height="320" fill="url(#karesansui)"/>
+
+  <!-- Drifting cloud strip -->
+  <rect x="0" y="58" width="1280" height="22" fill="url(#cloud)" opacity="0.7"/>
+  <rect x="0" y="186" width="1280" height="14" fill="url(#cloud)" opacity="0.4"/>
+
+  <!-- Moon halo -->
+  <circle cx="220" cy="146" r="170" fill="url(#moonHalo)"/>
+
+  <!-- 十六夜 (waning moon — slightly past full, the wabi-sabi imperfection) -->
+  <g>
+    <circle cx="220" cy="146" r="86" fill="url(#moon)" mask="url(#izayoi)" filter="url(#moonGlow)"/>
+    <circle cx="220" cy="146" r="86" fill="url(#moon)" mask="url(#izayoi)"/>
+    <!-- Keyhole inside the moon (Keychain metaphor) -->
+    <g transform="translate(220 146)" fill="#0a0d18" opacity="0.85">
+      <circle r="14"/>
+      <rect x="-3.5" y="6" width="7" height="20" rx="1.5"/>
+    </g>
+  </g>
+
+  <!-- Pine branch silhouette (sumi-e), reaching from upper-left into the frame -->
+  <g fill="#05070d" stroke="#05070d" stroke-linecap="round" stroke-linejoin="round">
+    <!-- main bough -->
+    <path d="M -10,18 C 80,38 160,72 248,86 C 318,98 372,82 416,60"
+          stroke="#05070d" stroke-width="6" fill="none"/>
+    <!-- sub branches -->
+    <path d="M 110,46 C 134,30 152,10 168,-4" stroke="#05070d" stroke-width="3" fill="none"/>
+    <path d="M 200,68 C 220,92 246,108 272,118" stroke="#05070d" stroke-width="3" fill="none"/>
+    <path d="M 320,88 C 346,72 366,52 384,30"  stroke="#05070d" stroke-width="3" fill="none"/>
+
+    <!-- pine needle clusters (simplified fan shapes) -->
+    <g opacity="0.95">
+      <g transform="translate(120 38) rotate(-20)">
+        <path d="M0,0 L-22,-10 M0,0 L-20,-2 M0,0 L-22,8 M0,0 L-18,16 M0,0 L-12,22"
+              stroke="#0a0d18" stroke-width="1.4" fill="none"/>
+      </g>
+      <g transform="translate(210 76) rotate(35)">
+        <path d="M0,0 L-22,-10 M0,0 L-20,-2 M0,0 L-22,8 M0,0 L-18,16 M0,0 L-12,22"
+              stroke="#0a0d18" stroke-width="1.4" fill="none"/>
+      </g>
+      <g transform="translate(300 94) rotate(-15)">
+        <path d="M0,0 L-22,-10 M0,0 L-20,-2 M0,0 L-22,8 M0,0 L-18,16 M0,0 L-12,22"
+              stroke="#0a0d18" stroke-width="1.4" fill="none"/>
+      </g>
+      <g transform="translate(380 56) rotate(20)">
+        <path d="M0,0 L-22,-10 M0,0 L-20,-2 M0,0 L-22,8 M0,0 L-18,16 M0,0 L-12,22"
+              stroke="#0a0d18" stroke-width="1.4" fill="none"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Stones (枯山水) — three irregular stones at the lower fold -->
+  <g fill="#1a2030" stroke="#0a0d18" stroke-width="0.8" opacity="0.85">
+    <ellipse cx="780" cy="296" rx="46" ry="10"/>
+    <path d="M 740,294 Q 760,272 780,278 Q 808,272 822,290 Q 814,300 780,300 Q 752,300 740,294 Z" fill="#222a3e"/>
+    <ellipse cx="952" cy="304" rx="32" ry="7"/>
+    <path d="M 924,302 Q 940,290 952,294 Q 974,290 980,302 Q 968,308 952,308 Q 936,308 924,302 Z" fill="#222a3e"/>
+    <ellipse cx="660" cy="304" rx="22" ry="5"/>
+    <path d="M 640,302 Q 652,294 660,296 Q 676,294 682,302 Q 672,306 660,306 Q 648,306 640,302 Z" fill="#1c2236"/>
+  </g>
+
+  <!-- Wordmark — English (monospace) -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+     font-weight="800" letter-spacing="3">
+    <text x="478" y="146" font-size="58">
+      <tspan fill="#e8e2d4">MACH</tspan><tspan fill="#d04a3a">STEALER</tspan>
+    </text>
+    <text x="480" y="178" font-size="13" fill="#7a8089" letter-spacing="6">
+      ONE PIPELINE BEHIND EVERY macOS INFOSTEALER
+    </text>
+  </g>
+
+  <!-- Japanese subtitle (mincho) -->
+  <g font-family="'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif"
+     fill="#e8e2d4">
+    <text x="480" y="222" font-size="24" letter-spacing="8" font-weight="500">
+      宵闇に潜む — macOS 情報窃取の解剖
+    </text>
+    <text x="482" y="250" font-size="12" fill="#7a8089" letter-spacing="4">
+      KEYCHAIN  ·  PBKDF2 (1003)  ·  AES-128-CBC  ·  SQLITE COPY-AND-READ
+    </text>
+  </g>
+
+  <!-- CLI hint -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+     font-size="12" fill="#d04a3a" opacity="0.5">
+    <text x="482" y="282">$ MachStealer -kind cookie -profile "Default"</text>
+  </g>
+
+  <!-- Vertical kanji column — right side, sparse, wabi-sabi negative space -->
+  <g font-family="'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif"
+     fill="#e8e2d4" font-weight="500" text-anchor="middle">
+    <text x="1156" y="80"  font-size="34" letter-spacing="2">侘</text>
+    <text x="1156" y="124" font-size="34" letter-spacing="2">寂</text>
+    <text x="1156" y="172" font-size="22" fill="#7a8089">の</text>
+    <text x="1156" y="214" font-size="34" letter-spacing="2">罠</text>
+  </g>
+
+  <!-- 落款 (small vermilion seal, lower-right — discreet) -->
+  <g transform="translate(1230 270)">
+    <rect x="-22" y="-22" width="44" height="44" rx="2" fill="#c8102e"/>
+    <rect x="-22" y="-22" width="44" height="44" rx="2" fill="#7a0a0a" filter="url(#seal-grain)" opacity="0.6"/>
+    <g font-family="'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif"
+       fill="#0a0a0a" font-weight="900" text-anchor="middle">
+      <text x="-11" y="-2" font-size="16">窃</text>
+      <text x="11"  y="-2" font-size="16">取</text>
+      <text x="-11" y="18" font-size="16">解</text>
+      <text x="11"  y="18" font-size="16">体</text>
+    </g>
+    <rect x="-22" y="-22" width="44" height="44" rx="2" fill="none" stroke="#0a0a0a" stroke-width="1.2" opacity="0.4"/>
+  </g>
+
+  <!-- Hairline horizon — barely visible (枯山水の境界) -->
+  <line x1="0" y1="262" x2="1280" y2="262" stroke="#3a4258" stroke-width="0.5" opacity="0.5"/>
+</svg>

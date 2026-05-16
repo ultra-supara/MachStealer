@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo/machstealer-banner.svg" alt="MachStealer — One Pipeline Behind Every macOS Infostealer" width="100%">
+</p>
+
 # MachStealer:One Pipeline Behind Every macOS Infostealer
 
 ## Talks & Recognition
@@ -5,27 +9,27 @@
 [![Black Hat USA 2026 Arsenal](https://img.shields.io/badge/Black%20Hat%20USA%202026-Arsenal-black?style=for-the-badge&logo=blackhat)](https://blackhat.com/us-26/arsenal/schedule/index.html?track[]=malware#machstealerone-pipeline-behind-every-macos-infostealer-52134)
 
 Selected for **Black Hat USA 2026 Arsenal** — *MachStealer: One Pipeline Behind Every macOS Infostealer*.
+Mandalay Bay, Las Vegas · August 1–6, 2026 · Track: Malware Defense ([session page](https://blackhat.com/us-26/arsenal/schedule/index.html?track[]=malware#machstealerone-pipeline-behind-every-macos-infostealer-52134)).
 
-<details>
-<summary><b>▶ Watch the talk (English)</b></summary>
-
-<a href="https://youtu.be/mzyQ9-8qsFg">
-  <img src="https://img.youtube.com/vi/mzyQ9-8qsFg/maxresdefault.jpg" alt="MachStealer talk (EN)" width="640">
-</a>
-
-</details>
-
-<details>
-<summary><b>▶ 講演を見る (日本語)</b></summary>
-
-<a href="https://youtu.be/9KyRqy37Iao">
-  <img src="https://img.youtube.com/vi/9KyRqy37Iao/maxresdefault.jpg" alt="MachStealer talk (JA)" width="640">
-</a>
-
-</details>
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://youtu.be/mzyQ9-8qsFg">
+        <img src="https://img.youtube.com/vi/mzyQ9-8qsFg/maxresdefault.jpg" alt="MachStealer talk (EN)" width="420">
+      </a>
+      <br><b>▶ Watch the talk (English)</b>
+    </td>
+    <td align="center">
+      <a href="https://youtu.be/9KyRqy37Iao">
+        <img src="https://img.youtube.com/vi/9KyRqy37Iao/maxresdefault.jpg" alt="MachStealer talk (JA)" width="420">
+      </a>
+      <br><b>▶ 講演を見る (日本語)</b>
+    </td>
+  </tr>
+</table>
 
 ## NOTICE
-- This software decrypts your Google Chrome's cookies and saved passwords, then outputs them to standard output.
+- This software decrypts and extracts your Google Chrome's cookies, saved passwords, credit cards, browsing history, and installed extensions, then outputs them to standard output.
   - This software **does not** upload any credentials to the internet.
   - This tool works locally only and is for security research purposes.
 
@@ -60,10 +64,21 @@ make test
 
 ## Features
 This tool can decrypt and extract the following data from Google Chrome:
-- **Cookies** (`-kind cookie`)
-- **Saved passwords** (`-kind logindata`)
+- **Cookies** (`-kind cookie`) — encrypted, decrypted at runtime
+- **Saved passwords** (`-kind logindata`) — encrypted, decrypted at runtime
+- **Credit cards** (`-kind creditcard`) — encrypted, decrypted at runtime
+- **Browsing history** (`-kind history`) — unencrypted, sorted by visit count
+- **Installed extensions** (`-kind extension`) — unencrypted, parsed from Preferences JSON
+
+Multiple Chrome profiles (Default, Profile 1, Profile 2, …) are supported via the `-profile` flag.
 
 ## Usage
+
+### Discover Chrome profiles
+
+```bash
+$ ./MachStealer-darwin-arm64 -list-profiles
+```
 
 ### Method 1: Automatic (with Keychain access prompt)
 
@@ -76,7 +91,19 @@ $ ./MachStealer-darwin-arm64 -kind cookie
 # Decrypt saved passwords (default profile)
 $ ./MachStealer-darwin-arm64 -kind logindata
 
-# Specify custom Chrome profile path
+# Decrypt saved credit cards
+$ ./MachStealer-darwin-arm64 -kind creditcard
+
+# Dump browsing history (sorted by visit count)
+$ ./MachStealer-darwin-arm64 -kind history
+
+# List installed extensions
+$ ./MachStealer-darwin-arm64 -kind extension
+
+# Target a non-default Chrome profile
+$ ./MachStealer-darwin-arm64 -kind cookie -profile "Profile 1"
+
+# Or specify a database path directly
 $ ./MachStealer-darwin-arm64 -kind cookie -targetpath ~/Library/Application\ Support/Google/Chrome/Profile\ 1/Cookies
 ```
 
@@ -98,17 +125,25 @@ $ ./MachStealer-darwin-arm64 -kind cookie -sessionstorage <session_storage_value
 # Decrypt saved passwords
 $ ./MachStealer-darwin-arm64 -kind logindata -sessionstorage <session_storage_value>
 
-# With custom profile path
-$ ./MachStealer-darwin-arm64 -kind cookie -targetpath ~/Library/Application\ Support/Google/Chrome/Profile\ 1/Cookies -sessionstorage <session_storage_value>
+# Decrypt saved credit cards
+$ ./MachStealer-darwin-arm64 -kind creditcard -sessionstorage <session_storage_value>
+
+# Combine with a specific profile
+$ ./MachStealer-darwin-arm64 -kind cookie -profile "Profile 1" -sessionstorage <session_storage_value>
 ```
 
 ## Command-line Options
 
-- `-kind <type>` **(required)**: Type of data to decrypt
+- `-kind <type>` **(required, unless `-list-profiles`)**: Type of data to decrypt or extract
   - `cookie`: Chrome cookies
   - `logindata`: Saved passwords
-- `-targetpath <path>` *(optional)*: Path to Chrome database file
-  - If not specified, uses default profile path: `~/Library/Application Support/Google/Chrome/Default/Cookies` or `Login Data`
+  - `creditcard`: Saved credit cards
+  - `history`: Browsing history
+  - `extension`: Installed extensions
+- `-profile <name>` *(optional)*: Chrome profile name (e.g. `Default`, `Profile 1`). Defaults to `Default`.
+- `-list-profiles` *(optional)*: List all Chrome profiles available on the system, then exit.
+- `-targetpath <path>` *(optional)*: Path to a specific Chrome database / preferences file
+  - If not specified, uses the path implied by `-profile` (e.g. `~/Library/Application Support/Google/Chrome/Default/Cookies`).
 - `-sessionstorage <value>` *(optional)*: Chrome session storage value from Keychain
   - If not specified, automatically retrieves from Keychain (triggers system prompt)
 - `-localstate <path>` *(optional)*: Chrome Local State file path (currently unused)

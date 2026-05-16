@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MachStealer">
+  <title>MachStealer</title>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0d1424"/>
+      <stop offset="1" stop-color="#000000"/>
+    </linearGradient>
+    <radialGradient id="moon" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0"   stop-color="#f4a07a"/>
+      <stop offset="0.55" stop-color="#d04a3a"/>
+      <stop offset="1"   stop-color="#7a1e16"/>
+    </radialGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0"   stop-color="#d04a3a" stop-opacity="0.55"/>
+      <stop offset="0.6" stop-color="#d04a3a" stop-opacity="0.15"/>
+      <stop offset="1"   stop-color="#d04a3a" stop-opacity="0"/>
+    </radialGradient>
+    <mask id="izayoi">
+      <rect width="64" height="64" fill="white"/>
+      <circle cx="38" cy="26" r="17" fill="black"/>
+    </mask>
+  </defs>
+
+  <!-- Rounded square frame -->
+  <rect width="64" height="64" rx="12" fill="url(#sky)"/>
+
+  <!-- Halo -->
+  <circle cx="32" cy="30" r="28" fill="url(#halo)"/>
+
+  <!-- Crescent moon -->
+  <circle cx="32" cy="30" r="20" fill="url(#moon)" mask="url(#izayoi)"/>
+
+  <!-- Keyhole inside moon -->
+  <g transform="translate(32 30)" fill="#0a0d18">
+    <circle r="3.4"/>
+    <rect x="-1" y="1.6" width="2" height="5" rx="0.6"/>
+  </g>
+
+  <!-- Garden hairline -->
+  <line x1="6" y1="56" x2="58" y2="56" stroke="#3a4258" stroke-width="0.5" opacity="0.6"/>
+</svg>

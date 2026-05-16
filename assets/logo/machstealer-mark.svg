@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="MachStealer">
+  <title>MachStealer</title>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"    stop-color="#0a0d18"/>
+      <stop offset="0.55" stop-color="#0d1424"/>
+      <stop offset="1"    stop-color="#000000"/>
+    </linearGradient>
+
+    <radialGradient id="moon" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0"    stop-color="#f4a07a"/>
+      <stop offset="0.55" stop-color="#d04a3a"/>
+      <stop offset="1"    stop-color="#7a1e16"/>
+    </radialGradient>
+
+    <radialGradient id="moonHalo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0"   stop-color="#d04a3a" stop-opacity="0.55"/>
+      <stop offset="0.5" stop-color="#d04a3a" stop-opacity="0.18"/>
+      <stop offset="1"   stop-color="#d04a3a" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="cloud" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#1c2438" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#1c2438" stop-opacity="0.85"/>
+      <stop offset="1"   stop-color="#1c2438" stop-opacity="0"/>
+    </linearGradient>
+
+    <pattern id="karesansui" x="0" y="0" width="512" height="512" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="#3a4258" stroke-width="0.8" opacity="0.4">
+        <circle cx="256" cy="540" r="80"/>
+        <circle cx="256" cy="540" r="130"/>
+        <circle cx="256" cy="540" r="180"/>
+        <circle cx="256" cy="540" r="230"/>
+        <circle cx="256" cy="540" r="280"/>
+      </g>
+    </pattern>
+
+    <filter id="seal-grain" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0
+                             0 0 0 0 0
+                             0 0 0 0 0
+                             0 0 0 -1.6 1"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+
+    <filter id="moonBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+
+    <!-- 十六夜 mask: subtract a slightly offset disc from the moon -->
+    <mask id="izayoi">
+      <rect width="512" height="512" fill="white"/>
+      <circle cx="290" cy="208" r="118" fill="black"/>
+    </mask>
+
+    <!-- Avatar safe-area: rounded square (GitHub clips to circle anyway) -->
+    <clipPath id="frame">
+      <rect width="512" height="512" rx="96"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <!-- Sky -->
+    <rect width="512" height="512" fill="url(#sky)"/>
+
+    <!-- Karesansui ripples (bottom, faint) -->
+    <rect width="512" height="512" fill="url(#karesansui)"/>
+
+    <!-- Cloud strip drifting under the moon -->
+    <rect x="0" y="118" width="512" height="28" fill="url(#cloud)" opacity="0.7"/>
+    <rect x="0" y="306" width="512" height="14" fill="url(#cloud)" opacity="0.4"/>
+
+    <!-- Moon halo -->
+    <circle cx="256" cy="216" r="220" fill="url(#moonHalo)"/>
+
+    <!-- 十六夜 (crescent moon — center hero) -->
+    <g>
+      <circle cx="256" cy="216" r="128" fill="url(#moon)" mask="url(#izayoi)" filter="url(#moonBlur)"/>
+      <circle cx="256" cy="216" r="128" fill="url(#moon)" mask="url(#izayoi)"/>
+      <!-- Keyhole inside moon — Keychain metaphor -->
+      <g transform="translate(256 216)" fill="#0a0d18" opacity="0.9">
+        <circle r="22"/>
+        <rect x="-5.5" y="9" width="11" height="32" rx="2"/>
+      </g>
+    </g>
+
+    <!-- Pine branch (upper-left, sumi-e silhouette) -->
+    <g fill="none" stroke="#05070d" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M -10,40 C 50,55 110,82 168,96 C 196,102 218,98 232,90"
+            stroke="#05070d" stroke-width="7"/>
+      <path d="M 70,68 C 86,52 100,32 110,16"  stroke="#05070d" stroke-width="3.4"/>
+      <path d="M 132,86 C 148,108 168,118 186,124" stroke="#05070d" stroke-width="3.4"/>
+      <path d="M 196,96 C 218,86 238,72 252,52" stroke="#05070d" stroke-width="3.4"/>
+
+      <g opacity="0.95">
+        <g transform="translate(78 60) rotate(-22)">
+          <path d="M0,0 L-22,-10 M0,0 L-20,-2 M0,0 L-22,8 M0,0 L-18,16 M0,0 L-12,22"
+                stroke="#0a0d18" stroke-width="1.5" fill="none"/>
+        </g>
+        <g transform="translate(146 96) rotate(38)">
+          <path d="M0,0 L-22,-10 M0,0 L-20,-2 M0,0 L-22,8 M0,0 L-18,16 M0,0 L-12,22"
+                stroke="#0a0d18" stroke-width="1.5" fill="none"/>
+        </g>
+        <g transform="translate(226 78) rotate(-12)">
+          <path d="M0,0 L-22,-10 M0,0 L-20,-2 M0,0 L-22,8 M0,0 L-18,16 M0,0 L-12,22"
+                stroke="#0a0d18" stroke-width="1.5" fill="none"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Three karesansui stones (bottom, sangen-iwagumi rhythm) -->
+    <g stroke="#0a0d18" stroke-width="0.8" opacity="0.85">
+      <ellipse cx="156" cy="448" rx="32" ry="7" fill="#1a2030"/>
+      <path d="M 124,446 Q 144,432 156,434 Q 178,432 188,444 Q 178,452 156,452 Q 134,452 124,446 Z" fill="#222a3e"/>
+      <ellipse cx="262" cy="466" rx="58" ry="10" fill="#1a2030"/>
+      <path d="M 210,464 Q 240,442 262,446 Q 296,442 314,460 Q 300,472 262,472 Q 226,472 210,464 Z" fill="#222a3e"/>
+      <ellipse cx="376" cy="452" rx="26" ry="6" fill="#1a2030"/>
+      <path d="M 352,450 Q 366,440 376,442 Q 394,440 400,450 Q 388,456 376,456 Q 360,456 352,450 Z" fill="#1c2236"/>
+    </g>
+
+    <!-- Hairline garden boundary -->
+    <line x1="0" y1="416" x2="512" y2="416" stroke="#3a4258" stroke-width="0.5" opacity="0.5"/>
+
+    <!-- Vertical kanji on right edge — 窃 / 取 -->
+    <g font-family="'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif"
+       fill="#e8e2d4" text-anchor="middle" font-weight="500">
+      <text x="466" y="158" font-size="36">窃</text>
+      <text x="466" y="206" font-size="36">取</text>
+    </g>
+
+    <!-- Wordmark (monospace, restrained, below the moon) -->
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+       font-weight="800" letter-spacing="4" text-anchor="middle">
+      <text x="256" y="372" font-size="34">
+        <tspan fill="#e8e2d4">MACH</tspan><tspan fill="#d04a3a">STEALER</tspan>
+      </text>
+    </g>
+
+    <!-- 落款 (vermilion seal, lower-left, small and discreet) -->
+    <g transform="translate(58 462)">
+      <rect x="-22" y="-22" width="44" height="44" rx="2" fill="#c8102e"/>
+      <rect x="-22" y="-22" width="44" height="44" rx="2" fill="#7a0a0a"
+            filter="url(#seal-grain)" opacity="0.6"/>
+      <g font-family="'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif"
+         fill="#0a0a0a" font-weight="900" text-anchor="middle">
+        <text x="-11" y="-2" font-size="16">解</text>
+        <text x="11"  y="-2" font-size="16">体</text>
+        <text x="0"   y="18" font-size="16">録</text>
+      </g>
+      <rect x="-22" y="-22" width="44" height="44" rx="2" fill="none"
+            stroke="#0a0a0a" stroke-width="1.2" opacity="0.4"/>
+    </g>
+  </g>
+</svg>
