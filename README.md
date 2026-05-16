@@ -8,8 +8,12 @@
 
 [![Black Hat USA 2026 Arsenal](https://img.shields.io/badge/Black%20Hat%20USA%202026-Arsenal-black?style=for-the-badge&logo=blackhat)](https://blackhat.com/us-26/arsenal/schedule/index.html?track[]=malware#machstealerone-pipeline-behind-every-macos-infostealer-52134)
 
-Selected for **Black Hat USA 2026 Arsenal** — *MachStealer: One Pipeline Behind Every macOS Infostealer*.
-Mandalay Bay, Las Vegas · August 1–6, 2026 · Track: Malware Defense ([session page](https://blackhat.com/us-26/arsenal/schedule/index.html?track[]=malware#machstealerone-pipeline-behind-every-macos-infostealer-52134)).
+Selected for **Black Hat USA 2026 Arsenal**
+*MachStealer: One Pipeline Behind Every macOS Infostealer*
+
+- Mandalay Bay, Las Vegas · August 4–6,2026
+- Track: Malware
+- [session page](https://blackhat.com/us-26/arsenal/schedule/index.html?track[]=malware#machstealerone-pipeline-behind-every-macos-infostealer-52134)
 
 <table>
   <tr>
