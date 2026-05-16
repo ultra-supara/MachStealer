@@ -22,7 +22,7 @@ After an infostealer runs, the victim's Mac keeps behaving normally. The fans do
 
 **Meaning:** The moon represents the trace the victim almost noticed, but didn't.
 
-#### 2. The keyhole inside the moon — Keychain
+#### 2. The keyhole inside the moon
 
 > "Look at the moon again. There's a keyhole at its center. That is *Keychain*. Every macOS infostealer family — AMOS, Poseidon, Banshee, Cthulhu, Cuckoo — they all start by knocking on this single door.
 >
@@ -38,7 +38,7 @@ After an infostealer runs, the victim's Mac keeps behaving normally. The fans do
 
 **Meaning:** Red marks both the attacker's trace and the researcher's accountability. Both are *signed*.
 
-#### 4. The pine branch — the unchanging observer
+#### 4. The pine branch
 
 > "The pine in Japanese gardens is *tokowa* — evergreen, the symbol of what does not change. In our story, the pine is the security researcher. We have been watching the same pipeline — Keychain, PBKDF2, AES-128-CBC, SQLite copy — for ten years. The malware authors change names, change C2 servers, rebrand from AMOS to Poseidon to Banshee. The pine does not move."
 
@@ -52,7 +52,7 @@ After an infostealer runs, the victim's Mac keeps behaving normally. The fans do
 
 **Meaning:** *Karesansui* is the deliberate omission. The PoC ethics — what was intentionally left out — are visualized.
 
-#### 6. Vertical kanji "侘寂の罠" — the title's true meaning
+#### 6. Vertical kanji "侘寂の罠"
 
 > "*Wabi-sabi* — the Japanese acceptance of imperfection, transience, and the beauty in things that decay. The kanji on the right reads: *wabi-sabi no wana* — the **trap** of wabi-sabi.
 >
@@ -102,29 +102,28 @@ After an infostealer runs, the victim's Mac keeps behaving normally. The fans do
 
 含意: 鍵穴はひとつしかない = 攻撃面の一意性。ここが防御の急所。
 
-#### 3. 朱の色 — 警告と落款
+#### 3. 朱の色
 
-> 「この朱は日本の国旗ではない。落款 — 作家が完成した作品に押す印の朱だ。右下に小さく押されている：『解体録』。これがこのツールの正体だ。マルウェアではない。署名され、日付の入った解体記録だ。
+> 「この朱は落款 — 作家が完成した作品に押す印の朱だ。右下に小さく押されている：『解体録』。これがこのツールの正体だ。マルウェアではない。署名され、日付の入った解体記録だ。
 >
 > 同じ朱が月にもある。盗む行為もまた署名を残すからだ — 読み方さえ知っていれば。私の講演はその署名の読み方を防御者に渡すことだ。」
 
 含意: 朱は攻撃の痕跡であり、研究者の責任でもある。どちらも "署名されている" のが本質。
 
-#### 4. 松の枝 — 不変の観察者
+#### 4. 松の枝
 
-> 「日本庭園の松は 常磐 — 常緑、変わらぬものの象徴だ。この物語において、松は研究者である。我々はこの十年、同じパイプラインを観察してきた — Keychain, PBKDF2, AES-128-CBC, SQLite コピー。マルウェア作者は名前を変える、C2 を変える、AMOS から Poseidon へ、Banshee へ rebrand する。松は動かない。」
+> 「日本庭園の松は常磐 — 常緑、変わらぬものの象徴だ。この物語において、松は研究者である。我々はこの十年、同じパイプラインを観察してきた — Keychain, PBKDF2, AES-128-CBC, SQLite コピー。マルウェア作者は名前を変える、C2 を変える、AMOS から Poseidon へ、Banshee へ rebrand する。松は動かない。」
 
 含意: マルウェアは流転する。防御コミュニティは継続する。
 
-#### 5. 枯山水 — 流れぬ水
+#### 5. 枯山水
 
 > 「枯山水 は水の無い庭だ。砂を熊手で掻いて、水であるかのような波紋を作る。そこに無いもの に対する瞑想なのだ。
->
 > MachStealer は枯山水だ。Exfiltration なし。C2 なし。Persistence なし。Infostealer の形だけが、ディスクに掻かれた波紋として残る。本物のマルウェアを実環境で動かすことなく、その姿を観察できる。底にある三つの石は三尊石組 — どの infostealer ファミリーも盗む三つのもの (cookies / passwords / cards) を表している。」
 
 含意: 枯山水は意図的な省略の表現。PoC として削ぎ落とした倫理を視覚化している。
 
-#### 6. 縦書き「侘寂の罠」 — タイトルの本意
+#### 6. 縦書き「侘寂の罠」
 
 > 「侘寂 — 不完全さ、無常、朽ちていくものに宿る美を受け入れる、日本の美意識。右側の漢字を読むと『侘寂の罠』となる。
 >
@@ -132,7 +131,7 @@ After an infostealer runs, the victim's Mac keeps behaving normally. The fans do
 
 含意: macOS のミニマリズム = 攻撃者の隠蔽装置という主題。
 
-#### 7. 余白 — もっとも大事な要素
+#### 7. 余白
 
 > 「この画像のどれだけが空白か見てほしい。日本の美意識において、空白、 間は不在ではない。意味が宿る場所だ。
 >
